@@ -5,7 +5,12 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
   <h1>{{heading}}</h1>
-  <img [src]="countries" />
+  <!--<img [src]="countries" />-->
+
+  <br/>
+  <a [routerLink]="['/countries']">Show me the countries</a>
+  <router-outlet></router-outlet>
+  
   `,
 })
 export class AppComponent  { 

@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CountriesService } from "../../services/countries.service";
+import { CountryService } from "../../services/country.service";
+import { Country } from "../../models/country.model";
 
 @Component({
     moduleId: module.id,
     selector: 'countries',
-    templateUrl: 'countries.component.html'
+    templateUrl: 'countries.component.html',
+    styleUrls: ['styles/tables.css']
 })
 
 export class CountriesComponent implements OnInit {
-    constructor(private countriesService: CountriesService) { }
+    constructor(private _countryService: CountryService) { }
 
-    countries:any[] = [];
+    countries = {
+        geonames: Array<Country>()
+    };
 
     ngOnInit() {
-        this.countries = this.countriesService.getList();
+        this._countryService.getCountries().subscribe(x => {
+            this.countries = x;
+        });
+        
      }
 }

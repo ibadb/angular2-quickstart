@@ -1,16 +1,19 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from "@angular/router";
+import { HttpModule } from "@angular/http";
 
-import { AppRoutingModule, routingComponents } from "../app.routing";
+import { routing } from "../app.routing";
 import { AppComponent }  from '../components/app.component';
 import { CountriesComponent }  from '../components/countries/countries.component';
+import { CountryComponent } from "../components/countries/country/country.component";
 
-import { CountriesService } from "../services/countries.service";
+import { CountryService } from "../services/country.service";
 
 @NgModule({
-  imports:      [ BrowserModule, AppRoutingModule ],
-  declarations: [ AppComponent, CountriesComponent, routingComponents ],
+  imports:      [ BrowserModule, HttpModule, routing ],
+  declarations: [ AppComponent, CountriesComponent, CountryComponent],
   bootstrap:    [ AppComponent ],
-  providers:    [ CountriesService ]
+  providers:    [ CountryService ]
 })
 export class AppModule { }
