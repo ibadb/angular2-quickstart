@@ -15,8 +15,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of countries.geonames">
-            <td><a [routerLink]="['/countries', item.countryCode]">{{item.countryName}}</a></td>
+        <tr *ngFor="let item of countries.geonames" (click)="navigateToCountryDetail(item.countryCode)">
+            <td style="max-width:100%;white-space:nowrap;">
+                <img src="http://www.geonames.org/flags/x/{{item.countryCode | lowercase}}.gif" height="15px" />
+                <!--<a [routerLink]="['/countries', item.countryCode]">{{item.countryName}}</a>-->
+                {{item.countryName}}
+            </td>
             <td>{{item.countryCode}}</td>
             <td>{{item.capital}}</td>
             <td>{{item.areaInSqKm}}</td>

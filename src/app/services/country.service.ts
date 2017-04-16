@@ -27,5 +27,15 @@ export class CountryService {
         
         return null;
     }
+
+    getNeighbours(geonameId: number) {
+        if(geonameId) {
+            let neighboursUrl = Constants.NEIGHBOURS_URL.replace('{0}', geonameId.toString());
+
+            return this.http
+                .get(neighboursUrl)
+                .map((res: Response) => res.json());
+        }
+    }
 }
 

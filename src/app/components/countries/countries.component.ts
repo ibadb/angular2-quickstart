@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { CountryService } from "../../services/country.service";
 import { Country } from "../../models/country.model";
@@ -11,7 +12,7 @@ import { Country } from "../../models/country.model";
 })
 
 export class CountriesComponent implements OnInit {
-    constructor(private _countryService: CountryService) { }
+    constructor(private _countryService: CountryService, private _router: Router) { }
 
     countries = {
         geonames: Array<Country>()
@@ -21,6 +22,9 @@ export class CountriesComponent implements OnInit {
         this._countryService.getCountries().subscribe(x => {
             this.countries = x;
         });
-        
+     }
+
+     navigateToCountryDetail(countryCode: string) {
+         this._router.navigate(['/countries', countryCode]);
      }
 }

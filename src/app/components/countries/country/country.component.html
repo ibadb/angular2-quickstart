@@ -1,3 +1,71 @@
 <div *ngIf="selectedCountry">
-    <h2>{{selectedCountry.geonames.length}}</h2>
+    <h2>{{selectedCountry.countryName}}</h2>
+
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="countryCode">Country Code:</label>
+                <label for="countryCode">{{selectedCountry.countryCode}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="continentName">Continent Name:</label>
+                <label for="continentName">{{selectedCountry.continentName}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="capital">Capital:</label>
+                <label for="capital">{{selectedCountry.capital}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="languages">Languages:</label>
+                <label for="languages">{{selectedCountry.languages}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="population">Population:</label>
+                <label for="population">{{selectedCountry.population}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="areaInSqKm">Area (sqkm):</label>
+                <label for="areaInSqKm">{{selectedCountry.areaInSqKm}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="east">East:</label>
+                <label for="east">{{selectedCountry.east}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="west">West:</label>
+                <label for="west">{{selectedCountry.west}}</label>
+            </div>
+            
+            <div class="pure-control-group">
+                <label for="north">North:</label>
+                <label for="north">{{selectedCountry.north}}</label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="south">South:</label>
+                <label for="south">{{selectedCountry.south}}</label>
+            </div>
+
+            <div *ngIf="neighbours" class="pure-control-group">
+                <label for="neighbours">Neighbours:</label>
+                <a for="neighbours" *ngFor="let neighbour of neighbours.geonames" [routerLink]="['/countries', neighbour.countryCode]">
+                           | {{neighbour.countryName}} |
+                </a>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="map">Map:</label>
+                <label for="map"><img id='myImage' src="http://www.geonames.org/img/country/250/{{selectedCountry.countryCode}}.png" /></label>
+            </div>
+
+            
+        </fieldset>
+    </form>
 </div>
